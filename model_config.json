@@ -1,0 +1,43 @@
+{
+  "model_name": "AttentionGRU_v2",
+  "sequence_len": 60,
+  "n_features": 13,
+  "feature_cols": [
+    "Open",
+    "High",
+    "Low",
+    "Close",
+    "Volume",
+    "Return",
+    "HL_Ratio",
+    "OC_Ratio",
+    "Momentum_5",
+    "Momentum_10",
+    "Vol_10",
+    "MA_Ratio",
+    "Log_Volume"
+  ],
+  "target_col": "Log_Return",
+  "trained_on_fold": 2,
+  "train_end_date": "2006-11-21",
+  "architecture": {
+    "gru1": 160,
+    "gru2": 96,
+    "attn_units": 64,
+    "dense1": 64,
+    "dense2": 32,
+    "dropout": 0.15,
+    "l2": 5e-06,
+    "recurrent_dropout": 0.05
+  },
+  "training": {
+    "loss": "huber",
+    "optimizer": "adam",
+    "init_lr": 5e-05,
+    "peak_lr": 0.0008,
+    "warmup_epochs": 5,
+    "batch_size": 16,
+    "max_epochs": 150,
+    "early_stopping_patience": 35
+  }
+}
